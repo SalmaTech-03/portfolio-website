@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Salma S</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background: linear-gradient(to right, #38bdf8, #2dd4bf, #6366f1);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: #38bdf8; }
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center px-6 md:px-10 py-4 border-b border-sky-400">
+    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500 bg-clip-text text-transparent animate-pulse">
+      Salma S
+    </h1>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex gap-8">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="skills.html" class="nav-link">Skills</a></li>
+      <li><a href="project.html" class="nav-link">Projects</a></li>
+      <li><a href="experience.html" class="nav-link">Experience</a></li>
+      <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+      <li><a href="volunteering.html" class="nav-link">Volunteering</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuicon" class="md:hidden flex flex-col gap-1">
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+    </button>
+
+    <!-- Social Icons (Desktop) -->
+    <div class="hidden md:flex gap-4">
+      <a href="https://github.com/" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub">
+      </a>
+      <a href="https://linkedin.com" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn">
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="sidenav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-black border-b border-sky-400 md:hidden px-6">
+    <div class="text-right p-10">
+            <p class="text-indigo-300 cursor-pointer" id="closenav">X</p>
+    </div>
+    <div class="flex flex-col">
+    <a href="index.html" class="nav-link py-2">Home</a>
+    <a href="skills.html" class="nav-link py-2">Skills</a>
+    <a href="project.html" class="nav-link py-2">Projects</a>
+    <a href="experience.html" class="nav-link py-2">Experience</a>
+    <a href="certifications.html" class="nav-link py-2">Certifications</a>
+    <a href="contact.html" class="nav-link py-2">Contact</a>
+    </div>
+
+    <div class="flex gap-4 mt-4">
+      <a href="https://github.com/SalmaTech-03" target="_blank" class="justify-center">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/salma-s-206671203" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn">
+      </a>
+    </div>
+  </div>
+  
+  <!-- Projects Section -->
+  <section class="bg-black p-10">
+    <h1 class="text-4xl font-semibold text-center mb-10 bg-gradient-to-r from-sky-400 via-teal-400 to-pink-500 bg-clip-text text-transparent">
+      Projects
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <!-- Project Card 1 -->
+      <div class="bg-gray-950 text-white p-6 rounded-2xl shadow-lg border border-sky-400 hover:scale-102 hover:shadow-pink-500/40 transition transform duration-300">
+        <img src="assets/project1.jpg" alt="Project Image" class="rounded-lg mb-4">
+        <h2 class="text-lg font-bold text-sky-300">AI Research Partner</h2>
+        <p class="text-sm mt-2">Tech Stack: Python, LangChain, Streamlit, Google Gemini, ArangoDB, FAISS, Google Search API.</p>
+        <p class="text-sm mt-2">Tools & Libraries: Git, GitHub, Hugging Face Spaces, Sentence-Transformers, PyPDF, Pydantic.</p>
+        <div class="flex justify-start gap-4 mt-4">
+          <a href="https://huggingface.co/spaces/SALMA003/ai-research-partner" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">Live Demo</a>
+          <a href="https://github.com/SalmaTech-03/ai-research-partner" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">GitHub</a>
+        </div>
+      </div>
+      <!-- Project Card 1 -->
+      <div class="bg-gray-950 text-white p-6 rounded-2xl shadow-lg border border-sky-400 hover:scale-102 hover:shadow-pink-500/40 transition transform duration-300">
+        <img src="assets/project2.jpg" alt="Project Image" class="rounded-lg mb-4">
+        <h2 class="text-lg font-bold text-sky-300">Natural Language Financial Q&A</h2>
+        <p class="text-sm mt-2">Tech Stack: Python, Streamlit, TensorFlow (Keras), Scikit-learn, Pandas, Transformers (FinBERT), Google Generative AI.</p>
+        <p class="text-sm mt-2">Tools & APIs: Git, GitHub, Plotly, Streamlit Cloud, Yahoo Finance API, Alpha Vantage API, Reuters News Feed.</p>
+        <div class="flex justify-start gap-4 mt-4">
+          <a href="https://finbot360-4dgbeq9msxs4ywczrmet4v.streamlit.app/" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">Live Demo</a>
+          <a href="https://github.com/SalmaTech-03/FinBot360" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">GitHub</a>
+        </div>
+      </div>
+
+      
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

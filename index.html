@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salma S | Portfolio</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Underline hover effect for navbar */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background: linear-gradient(to right, #38bdf8, #2dd4bf, #6366f1);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #38bdf8;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Neon blink animation */
+    @keyframes neon-blink {
+      0%, 100% {
+        filter: drop-shadow(0 0 12px #38bdf8) drop-shadow(0 0 24px #38bdf8);
+      }
+      50% {
+        filter: drop-shadow(0 0 2px #38bdf8);
+      }
+    }
+    .animate-neon-blink {
+      animation: neon-blink 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center px-6 md:px-10 py-4 border-b border-sky-400">
+    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500 bg-clip-text text-transparent animate-pulse">
+      Salma S
+    </h1>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex gap-8">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="skills.html" class="nav-link">Skills</a></li>
+      <li><a href="project.html" class="nav-link">Projects</a></li>
+      <li><a href="experience.html" class="nav-link">Experience</a></li>
+      <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+      <li><a href="volunteering.html" class="nav-link">Volunteering</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuicon" class="md:hidden flex flex-col gap-1">
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+    </button>
+
+    <!-- Social Icons (Desktop) -->
+    <div class="hidden md:flex gap-4">
+      <a href="https://github.com/" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub">
+      </a>
+      <a href="https://linkedin.com" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn">
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="sidenav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-black border-b border-sky-400 md:hidden px-6">
+    <div class="text-right p-10">
+            <p class="text-indigo-300 cursor-pointer" id="closenav">X</p>
+    </div>
+    <div class="flex flex-col">
+    <a href="index.html" class="nav-link py-2">Home</a>
+    <a href="skills.html" class="nav-link py-2">Skills</a>
+    <a href="project.html" class="nav-link py-2">Projects</a>
+    <a href="experience.html" class="nav-link py-2">Experience</a>
+    <a href="certifications.html" class="nav-link py-2">Certifications</a>
+    <a href="contact.html" class="nav-link py-2">Contact</a>
+    </div>
+
+    <div class="flex gap-4 mt-4">
+      <a href="https://github.com/SalmaTech-03" target="_blank" class="justify-center">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/salma-s-206671203" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn">
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="flex flex-col-reverse md:flex-row justify-between items-center px-6 md:px-10 py-12 md:py-16">
+    
+    <!-- Left Content -->
+    <div class="md:w-1/2 text-center md:text-left">
+      <h2 class="text-3xl md:text-4xl font-bold">Hi!!</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mt-2">
+        I'm <span class="text-sky-300 drop-shadow-[0_0_15px_#38bdf8] drop-shadow-[0_0_30px_#38bdf8]">Salma S</span>
+      </h2>
+
+      <!-- Titles -->
+      <h3 class="text-xl md:text-2xl mt-2 font-bold bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500 bg-clip-text text-transparent">
+        Data Scientist • AI Engineer
+      </h3>
+
+      <p class="text-gray-300 mt-4 leading-relaxed text-sm md:text-base">
+        I am a passionate Data Scientist with experience in analyzing complex datasets and building predictive models. Skilled in Python, machine learning, and data visualization, I transform raw data into actionable insights. I enjoy solving real-world problems through data-driven solutions and continuously learning new techniques to improve accuracy and efficiency. My projects reflect a blend of analytical thinking and creativity, aimed at making informed decisions from data
+      </p>
+
+      <a href="assets/Salma_S_Resume.pdf" download="Salma_S_Resume.pdf"
+         class="inline-block mt-6 px-5 md:px-6 py-2 border border-sky-400 rounded-lg hover:bg-sky-400 hover:text-black transition text-sm md:text-base">
+        Download Resume
+      </a>
+    </div>
+
+    <!-- Right Image -->
+    <div class="md:w-1/2 flex justify-center mb-8 md:mb-0">
+      <img src="assets/salma-blazer.jpg" 
+           alt="Profile" 
+           class="rounded-full w-36 h-36 sm:w-48 sm:h-48 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover object-[50%_40%] border-2 border-sky-400 animate-neon-blink" 
+           loading="lazy" 
+           decoding="async" 
+           width="320" 
+           height="320">
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="px-6 md:px-16 py-16 bg-black">
+    <h2 class="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500 bg-clip-text text-transparent">
+      Education
+    </h2>
+
+    <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
+      
+      <!-- Card 1 -->
+      <div class="p-6 border border-sky-400 rounded-xl shadow-lg hover:shadow-sky-500/40 transition">
+        <h3 class="text-xl font-semibold text-sky-300">Higher Secondary Education</h3>
+        <p class="text-gray-400">Auxilium Matriculation Higher Secondary School</p>
+        <p class="text-gray-500 text-sm">2018 - 2019</p>
+        <p class="mt-2 text-gray-300 text-sm">🏆 Chess – 1st Prize (Inter-School)</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="p-6 border border-sky-400 rounded-xl shadow-lg hover:shadow-sky-500/40 transition">
+        <h3 class="text-xl font-semibold text-sky-300">Secondary School Leaving Certificate</h3>
+        <p class="text-gray-400">Pachamuthu Matriculation Higher Secondary School</p>
+        <p class="text-gray-500 text-sm">2020 - 2021</p>
+        <p class="mt-2 text-gray-300 text-sm">Specialization: Mathematics & Biology</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="p-6 border border-sky-400 rounded-xl shadow-lg hover:shadow-sky-500/40 transition">
+        <h3 class="text-xl font-semibold text-sky-300">
+          Bachelor of Technology in Artificial Intelligence & Data Science (B.Tech AI & DS)
+        </h3>
+        <p class="text-gray-400">Dhirajlal Gandhi College Of Technology , Hindustan University</p>
+        <p class="text-gray-500 text-sm">2022 - 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

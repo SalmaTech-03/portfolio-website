@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salma S | Certifications</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Navbar underline effect */
+    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px; left: 0; bottom: -4px;
+      background: linear-gradient(to right, #38bdf8, #2dd4bf, #6366f1); transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: #38bdf8; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Neon blink animation */
+    @keyframes neon-blink {
+      0%, 100% { filter: drop-shadow(0 0 12px #38bdf8) drop-shadow(0 0 24px #38bdf8); }
+      50% { filter: drop-shadow(0 0 2px #38bdf8); }
+    }
+    .animate-neon-blink { animation: neon-blink 2s infinite ease-in-out; }
+
+    /* Certificate hover effect */
+    .cert-card {
+      border: 1px solid #38bdf8; border-radius: 1rem; overflow-hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 10px;   /* adds space inside the card around the image */
+  border-radius: 0.75rem; /* optional: rounded corners */
+    }
+    .cert-card:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 20px #38bdf8, 0 0 40px #2dd4bf;
+    }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center px-6 md:px-10 py-4 border-b border-sky-400">
+    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500 bg-clip-text text-transparent animate-pulse">
+      Salma S
+    </h1>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex gap-8">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="skills.html" class="nav-link">Skills</a></li>
+      <li><a href="project.html" class="nav-link">Projects</a></li>
+      <li><a href="experience.html" class="nav-link">Experience</a></li>
+      <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+      <li><a href="volunteering.html" class="nav-link">Volunteering</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuicon" class="md:hidden flex flex-col gap-1">
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+    </button>
+
+    <!-- Social Icons (Desktop) -->
+    <div class="hidden md:flex gap-4">
+      <a href="https://github.com/" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub">
+      </a>
+      <a href="https://linkedin.com" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn">
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="sidenav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-black border-b border-sky-400 md:hidden px-6">
+    <div class="text-right p-10">
+            <p class="text-indigo-300 cursor-pointer" id="closenav">X</p>
+    </div>
+    <div class="flex flex-col">
+    <a href="index.html" class="nav-link py-2">Home</a>
+    <a href="skills.html" class="nav-link py-2">Skills</a>
+    <a href="project.html" class="nav-link py-2">Projects</a>
+    <a href="experience.html" class="nav-link py-2">Experience</a>
+    <a href="certifications.html" class="nav-link py-2">Certifications</a>
+    <a href="contact.html" class="nav-link py-2">Contact</a>
+    </div>
+
+    <div class="flex gap-4 mt-4">
+      <a href="https://github.com/SalmaTech-03" target="_blank" class="justify-center">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/salma-s-206671203" target="_blank">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn">
+      </a>
+    </div>
+  </div>
+
+  <!-- Certifications Section -->
+  <section class="px-6 md:px-16 py-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12
+               bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500
+               bg-clip-text text-transparent fade-in">
+      Certifications
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <!-- Certificate 1 -->
+      <div class="cert-card fade-in">
+        <img src="assets/certificate1.jpg" alt="Certificate 1" class="w-full h-64 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-sky-300">Deep learning using Pytorch</h3>
+          <p class="text-gray-400 text-sm mt-1">Issued by HCL Guvi</p>
+          <br>
+          <a href="https://www.guvi.in/share-certificate/S61474017ZK3l15C4c" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">LINK</a>
+        </div>
+      </div>
+
+      <!-- Certificate 2 -->
+      <div class="cert-card fade-in">
+        <img src="assets/certificate2.jpg" alt="Certificate 2" class="w-full h-64 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-sky-300">SQL advanced certificate</h3>
+          <p class="text-gray-400 text-sm mt-1">Issued by HackerRank</p>
+          <br>
+          <a href="https://www.hackerrank.com/certificates/0bf6a5df2767" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">LINK</a>
+        </div>
+      </div>
+
+      <!-- Certificate 3 -->
+      <div class="cert-card fade-in">
+        <img src="assets/certificate3.jpg" alt="Certificate 3" class="w-full h-64 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-sky-300">Prompt Design in Vertex AI</h3>
+          <p class="text-gray-400 text-sm mt-1">Issued by Google</p>
+          <br>
+          <a href="https://www.credly.com/badges/7b9feb06-bb98-4163-8889-8487bea39ffb/public_url" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">LINK</a>
+        </div>
+        <br>
+
+      </div>
+
+      <!-- Certificate 4 -->
+      <div class="cert-card fade-in">
+        <img src="assets/certificate4.jpg" alt="Certificate 3" class="w-full h-64 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-sky-300">Natural Language Processing</h3>
+          <p class="text-gray-400 text-sm mt-1">Issued by Infosys Springboot</p>
+          <br>
+          <a href="https://verify.onwingspan.com" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">LINK</a>
+        </div>
+        <br>
+
+      </div>
+
+      <!-- Certificate 5 -->
+      <div class="cert-card fade-in">
+        <img src="assets/certificate5.jpg" alt="Certificate 3" class="w-full h-64 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-sky-300">Google Cloud Data Analytics Certificate</h3>
+          <p class="text-gray-400 text-sm mt-1">Issued by Google</p>
+          <br>
+          <a href="https://www.credly.com/badges/8570a150-5b63-4351-904d-52eb6a616aba/public_url" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">LINK</a>
+        </div>
+        <br>
+      </div>
+
+      <!-- Certificate  -->
+      <div class="cert-card fade-in">
+        <img src="assets/certificate6.jpg" alt="Certificate 3" class="w-full h-64 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-sky-300">Oracle Cloud Infrastructure 2023 AI Certified Foundations Associate</h3>
+          <p class="text-gray-400 text-sm mt-1">Issued by Oracle</p>
+          <br>
+          <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=26F5DD7BFD5FF62B1695EF7D001A71DB4F46986DE400B12D23D25EDE04A2A8E3" target="_blank"
+             class="bg-gradient-to-r from-indigo-500 to-pink-500 px-4 py-2 rounded-lg shadow-md hover:shadow-lg">LINK</a>
+        </div>
+        <br>
+      </div>
+
+      
+
+      <!-- Add more certificate cards similarly -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black border-t border-sky-400 mt-16 py-6 text-center text-gray-400">
+    <p>© 2025 Salma S. All rights reserved.</p>
+    <div class="flex justify-center gap-4 mt-2">
+      <a href="https://github.com/SalmaTech-03" target="_blank" class="hover:text-white transition">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/salma-s-206671203" target="_blank" class="hover:text-white transition">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn">
+      </a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
