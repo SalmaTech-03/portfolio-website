@@ -6,44 +6,26 @@
   <title>Salma S | Skills</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Navbar underline effect */
     .nav-link { position: relative; transition: color 0.3s ease; }
-    .nav-link::after {
-      content: ''; position: absolute; width: 0; height: 2px; left: 0; bottom: -4px;
-      background: linear-gradient(to right, #38bdf8, #2dd4bf, #6366f1); transition: width 0.3s ease;
-    }
+    .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; left: 0; bottom: -4px; background: linear-gradient(to right, #38bdf8, #2dd4bf, #6366f1); transition: width 0.3s ease; }
     .nav-link:hover { color: #38bdf8; }
     .nav-link:hover::after { width: 100%; }
 
-    /* Neon blink animation */
-    @keyframes neon-blink {
-      0%, 100% { filter: drop-shadow(0 0 12px #38bdf8) drop-shadow(0 0 24px #38bdf8); }
-      50% { filter: drop-shadow(0 0 2px #38bdf8); }
-    }
-    .animate-neon-blink { animation: neon-blink 2s infinite ease-in-out; }
+    .skill-card { background: rgba(30, 41, 59, 0.5); border: 1px solid #38bdf8; border-radius: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .skill-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 0 20px #38bdf8, 0 0 40px #2dd4bf; }
 
-    /* Skill card hover effect */
-    .skill-card {
-      background: rgba(255,255,255,0.05); 
-      border: 1px solid #38bdf8; 
-      border-radius: 1rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .skill-card:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 0 20px #38bdf8, 0 0 40px #2dd4bf;
-    }
+    .skill-badge { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid #38bdf8; border-radius: 9999px; padding: 0.5rem 1rem; transition: transform 0.2s ease, background 0.3s, color 0.3s; white-space: nowrap; }
+    .skill-badge:hover { background: #38bdf8; color: black; transform: scale(1.1); }
+    .skill-badge img { width: 1.25rem; height: 1.25rem; transition: filter 0.3s ease; object-fit: contain; }
 
-    .skill-badge {
-      display: flex; align-items: center; gap: 0.5rem; 
-      border: 1px solid #38bdf8; border-radius: 9999px;
-      padding: 0.5rem 1rem; transition: transform 0.2s ease, background 0.3s, color 0.3s;
-    }
-    .skill-badge:hover {
-      background: #38bdf8; color: black; transform: scale(1.1);
-    }
-
-    /* Fade-in animation for sections */
+    /* For single-color icons that need to be white on dark, and black on hover */
+    .skill-badge .icon-mono { filter: brightness(0) invert(1); }
+    .skill-badge:hover .icon-mono { filter: brightness(0) invert(0); }
+    
+    /* For multi-color logos that should not be filtered */
+    .skill-badge .icon-color { filter: none; }
+    .skill-badge:hover .icon-color { filter: none; }
+    
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fade-in.show { opacity: 1; transform: translateY(0); }
   </style>
@@ -51,171 +33,136 @@
 <body class="bg-black text-white font-sans">
 
   <!-- Navbar -->
-  <nav class="flex justify-between items-center px-6 md:px-10 py-4 border-b border-sky-400">
-    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500 bg-clip-text text-transparent animate-pulse">
-      Salma S
-    </h1>
-
-    <!-- Desktop Menu -->
+  <nav class="flex justify-between items-center px-6 md:px-10 py-4 border-b border-sky-400 sticky top-0 bg-black z-50">
+    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500 bg-clip-text text-transparent animate-pulse">Salma S</h1>
     <ul class="hidden md:flex gap-8">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="skills.html" class="nav-link">Skills</a></li>
-      <li><a href="project.html" class="nav-link">Projects</a></li>
-      <li><a href="experience.html" class="nav-link">Experience</a></li>
-      <li><a href="certifications.html" class="nav-link">Certifications</a></li>
-      <li><a href="volunteering.html" class="nav-link">Volunteering</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="index.html" class="nav-link">Home</a></li><li><a href="skills.html" class="nav-link">Skills</a></li><li><a href="project.html" class="nav-link">Projects</a></li><li><a href="experience.html" class="nav-link">Experience</a></li><li><a href="certifications.html" class="nav-link">Certifications</a></li><li><a href="volunteering.html" class="nav-link">Volunteering</a></li><li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
-
-    <!-- Mobile Menu Button -->
-    <button id="menuicon" class="md:hidden flex flex-col gap-1">
-      <span class="w-6 h-0.5 bg-white"></span>
-      <span class="w-6 h-0.5 bg-white"></span>
-      <span class="w-6 h-0.5 bg-white"></span>
-    </button>
-
-    <!-- Social Icons (Desktop) -->
+    <button id="menuicon" class="md:hidden flex flex-col gap-1"><span class="w-6 h-0.5 bg-white"></span><span class="w-6 h-0.5 bg-white"></span><span class="w-6 h-0.5 bg-white"></span></button>
     <div class="hidden md:flex gap-4">
-      <a href="https://github.com/" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub">
-      </a>
-      <a href="https://linkedin.com" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn">
-      </a>
+      <a href="https://github.com/SalmaTech-03" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="w-6 icon-mono" alt="GitHub"></a>
+      <a href="https://www.linkedin.com/in/salma-s-206671203" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" class="w-6 icon-color" alt="LinkedIn"></a>
     </div>
   </nav>
 
-  <!-- Mobile Dropdown Menu -->
+  <!-- Mobile Menu -->
   <div id="sidenav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-black border-b border-sky-400 md:hidden px-6">
-    <div class="text-right p-10">
-            <p class="text-indigo-300 cursor-pointer" id="closenav">X</p>
-    </div>
+    <div class="text-right p-10"><p class="text-indigo-300 cursor-pointer" id="closenav">X</p></div>
     <div class="flex flex-col">
-    <a href="index.html" class="nav-link py-2">Home</a>
-    <a href="skills.html" class="nav-link py-2">Skills</a>
-    <a href="project.html" class="nav-link py-2">Projects</a>
-    <a href="experience.html" class="nav-link py-2">Experience</a>
-    <a href="certifications.html" class="nav-link py-2">Certifications</a>
-    <a href="contact.html" class="nav-link py-2">Contact</a>
+      <a href="index.html" class="nav-link py-2">Home</a><a href="skills.html" class="nav-link py-2">Skills</a><a href="project.html" class="nav-link py-2">Projects</a><a href="experience.html" class="nav-link py-2">Experience</a><a href="certifications.html" class="nav-link py-2">Certifications</a><a href="volunteering.html" class="nav-link py-2">Volunteering</a><a href="contact.html" class="nav-link py-2">Contact</a>
     </div>
-
     <div class="flex gap-4 mt-4">
-      <a href="https://github.com/SalmaTech-03" target="_blank" class="justify-center">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub">
-      </a>
-      <a href="https://www.linkedin.com/in/salma-s-206671203" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn">
-      </a>
+      <a href="https://github.com/SalmaTech-03" target="_blank" class="justify-center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="w-6 icon-mono" alt="GitHub"></a>
+      <a href="https://www.linkedin.com/in/salma-s-206671203" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" class="w-6 icon-color" alt="LinkedIn"></a>
     </div>
   </div>
-
-  
 
   <!-- Skills Section -->
   <section id="skills" class="px-6 md:px-16 py-16">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12
-               bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500
-               bg-clip-text text-transparent ">
-      Skills
-    </h2>
-
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500 bg-clip-text text-transparent">Technical Skills</h2>
     <div class="space-y-8">
 
-      <!-- Data Science Tools -->
-<div class="skill-card p-6 fade-in">
-  <div class="md:flex md:justify-between md:items-center">
-    <div class="md:w-1/3">
-      <h3 class="text-2xl font-semibold text-sky-300">Data Science Tools</h3>
-    </div>
-    <div class="md:w-2/3 flex flex-wrap gap-4 mt-4 md:mt-0">
-      <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-5 h-5" alt="Python"> Python</div>
-      <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg" class="w-5 h-5" alt="Pandas"> Pandas</div>
-      <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg" class="w-5 h-5" alt="NumPy"> NumPy</div>
-      <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Created_with_Matplotlib-logo.svg" class="w-5 h-5" alt="Matplotlib"> Matplotlib</div>
-      <div class="skill-badge"><img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" class="w-5 h-5" alt="Seaborn"> Seaborn</div>
-      <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" class="w-5 h-5" alt="Jupyter"> Jupyter</div>
-    </div>
-  </div>
-</div>
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">Programming & Scripting</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="icon-color" alt="Python">Python</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" class="icon-color" alt="R">R</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/2772/2772128.png" class="icon-color" alt="SQL">SQL</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/14681/14681007.png" class="icon-color" alt="NoSQL">NoSQL</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="icon-color" alt="JavaScript">JavaScript</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original-wordmark.svg" class="icon-color" alt="PySpark">PySpark</div>
+      </div></div>
 
-<!-- NLP Tools -->
-<div class="skill-card p-6 fade-in">
-  <div class="md:flex md:justify-between md:items-center">
-    <div class="md:w-1/3">
-      <h3 class="text-2xl font-semibold text-sky-300">NLP Tools</h3>
-    </div>
-    <div class="md:w-2/3 flex flex-wrap gap-4 mt-4 md:mt-0">
-      <div class="skill-badge"><img src="assets/nltk-logo.png" class="w-5 h-5" alt="NLTK"> NLTK</div>
-      <div class="skill-badge"><img src="assets/spacy-logo.png" class="w-5 h-5" alt="SpaCy"> SpaCy</div>
-      <div class="skill-badge"><img src="assets/genism-logo.png" class="w-5 h-5" alt="Gensim"> Gensim</div>
-      <div class="skill-badge"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" class="w-5 h-5" alt="Hugging Face"> Hugging Face</div>
-    </div>
-  </div>
-</div>
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">Machine Learning & AI</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/18263/18263242.png" class="icon-color" alt="Supervised Learning">Supervised Learning</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/11751/11751565.png" class="icon-color" alt="Unsupervised Learning">Unsupervised Learning</div>
+          <div class="skill-badge"><img src="https://tse4.mm.bing.net/th/id/OIP.S6BmAu49lHUCFDpB73YpVgHaHk?pid=Api&P=0&h=180" class="icon-color" alt="Deep Learning">Deep Learning</div>
+          <div class="skill-badge"><img src="https://tse4.mm.bing.net/th/id/OIP.u3gmZSIxOf6oxsq0e9PH4AHaHa?pid=Api&P=0&h=180" class="icon-color" alt="Transfer Learning">Transfer Learning</div>
+          <div class="skill-badge"><img src="https://tse2.mm.bing.net/th/id/OIP.XucjUt85WAQR3p6gANu1dgHaGj?pid=Api&P=0&h=180" class="icon-color" alt="Reinforcement Learning">Reinforcement Learning</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/8746/8746885.png" class="icon-color" alt="Optimization">Optimization</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/1465/1465898.png" class="icon-color" alt="Predictive Analytics">Predictive Analytics</div>
+      </div></div>
 
-<!-- ML Tools -->
-<div class="skill-card p-6 fade-in">
-  <div class="md:flex md:justify-between md:items-center">
-    <div class="md:w-1/3">
-      <h3 class="text-2xl font-semibold text-sky-300">Machine Learning Tools</h3>
-    </div>
-    <div class="md:w-2/3 flex flex-wrap gap-4 mt-4 md:mt-0">
-      <div class="skill-badge"><img src="assets/scikitlearn-logo.png" class="w-5 h-5" alt="Scikit-learn"> Scikit-learn</div>
-      <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/6/69/XGBoost_logo.png" class="w-5 h-5" alt="XGBoost"> XGBoost</div>
-      <div class="skill-badge"><img src="assets/lightbgm-logo.png" class="w-5 h-5" alt="LightGBM"> LightGBM</div>
-      <div class="skill-badge"><img src="assets/catboost-logo.png" class="w-5 h-5" alt="CatBoost"> CatBoost</div>
-    </div>
-  </div>
-</div>
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">Frameworks & Libraries</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="icon-color" alt="TensorFlow">TensorFlow</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" class="icon-color" alt="PyTorch">PyTorch</div>
+          <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" class="icon-color" alt="Scikit-learn">Scikit-learn</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg" class="icon-color" alt="Keras">Keras</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/1960/1960381.png" class="icon-color" alt="XGBoost">XGBoost</div>
+          <div class="skill-badge"><img src="https://th.bing.com/th/id/ODF.EmVY4N_nJ-gjB7_yqN4JfQ?pid=1.2" class="icon-color" alt="LangChain">LangChain</div>
+          <div class="skill-badge"><img src="https://www.bing.com/th/id/OIP.Z37y_zgV8YHxCf-FHI-DcAAAAA?pid=3.1" class="icon-color" alt="LangGraph">LangGraph</div>
+          <div class="skill-badge"><img src="https://th.bing.com/th/id/OIP.j1Jchf0k5_EcSL06N7oCswHaE8?pid=1.7" class="icon-color" alt="FAISS">FAISS</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/16695/16695102.png" class="icon-color" alt="Hugging Face">Hugging Face</div>
+      </div></div>
 
-<!-- Deep Learning -->
-<div class="skill-card p-6 fade-in">
-  <div class="md:flex md:justify-between md:items-center">
-    <div class="md:w-1/3">
-      <h3 class="text-2xl font-semibold text-sky-300">Deep Learning</h3>
-    </div>
-    <div class="md:w-2/3 flex flex-wrap gap-4 mt-4 md:mt-0">
-      <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="w-5 h-5" alt="TensorFlow"> TensorFlow</div>
-      <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keras/keras-original.svg" class="w-5 h-5" alt="Keras"> Keras</div>
-      <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" class="w-5 h-5" alt="PyTorch"> PyTorch</div>
-    </div>
-  </div>
-</div>
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">NLP & LLMs</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://th.bing.com/th/id/OIP.uNRTZhRRUkdazt4PE7VhhwHaE9?pid=1.7" class="icon-color" alt="BERT">BERT</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/11865/11865338.png" class="icon-color" alt="GPT">GPT</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/8131/8131880.png" class="icon-color" alt="T5">T5</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/7309/7309081.png" class="icon-color" alt="Llama">Llama</div>
+          <div class="skill-badge"><img src="https://www.bing.com/th/id/OIP.VZQqz-GL4w5snXvrLzny6wHaB2?pid=3.1" class="icon-color" alt="FinBERT">FinBERT</div>
+          <div class="skill-badge"><img src="https://th.bing.com/th/id/OIP.EBjJNLBcGZ5SRDUjvm8yFQHaEL?pid=1.7" class="icon-color" alt="Gemma">Gemma</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/15311/15311388.png" class="icon-color" alt="Prompt Engineering">Prompt Engineering</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/12281/12281255.png" class="icon-color" alt="RAG">RAG</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/3930/3930428.png" class="icon-color" alt="Knowledge Graphs">Knowledge Graphs</div>
+      </div></div>
+      
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">Data Engineering & Processing</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" class="icon-color" alt="Pandas">Pandas</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" class="icon-color" alt="NumPy">NumPy</div>
+          <div class="skill-badge"><img src="https://dask.org/_images/dask_horizontal_white_no_pad.svg" class="icon-color" alt="Dask">Dask</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/11365/11365303.png" class="icon-color" alt="Feature Engineering">Feature Engineering</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/12238/12238493.png" class="icon-color" alt="ETL Pipelines">ETL Pipelines</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/2318/2318736.png" class="icon-color" alt="Data Wrangling">Data Wrangling</div>
+      </div></div>
 
-<!-- Deployment -->
-<div class="skill-card p-6 fade-in">
-  <div class="md:flex md:justify-between md:items-center">
-    <div class="md:w-1/3">
-      <h3 class="text-2xl font-semibold text-sky-300">Deployment</h3>
-    </div>
-    <div class="md:w-2/3 flex flex-wrap gap-4 mt-4 md:mt-0">
-      <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-5 h-5" alt="Docker"> Docker</div>
-      <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Kubernetes_logo.svg" class="w-5 h-5" alt="Kubernetes"> Kubernetes</div>
-      <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-5 h-5" alt="FastAPI"> FastAPI</div>
-      <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" class="w-5 h-5" alt="Flask"> Flask</div>
-      <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg" class="w-5 h-5" alt="Streamlit"> Streamlit</div>
-    </div>
-  </div>
-</div>
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">Cloud & MLOps</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://tse3.mm.bing.net/th/id/OIP.kLxGwQM5jEi8qGapSqcIxAHaHa?pid=ImgDetMain" class="icon-color" alt="AWS">AWS</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" class="icon-color" alt="Google Cloud">Google Cloud</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" class="icon-color" alt="Azure">Azure ML</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="icon-color" alt="Docker">Docker</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" class="icon-color" alt="Kubernetes">Kubernetes</div>
+          <div class="skill-badge"><img src="https://svgmix.com/uploads/azure-patterns/c5bbb9-mlflow.svg" class="icon-color" alt="MLflow">MLflow</div>
+          <div class="skill-badge"><img src="https://th.bing.com/th/id/ODF.W-pnFqbyJnsI9xDJVq8oqw?pid=1.2" class="icon-color" alt="Airflow">Airflow</div>
+          <div class="skill-badge"><img src="https://www.kubeflow.org/images/logo.svg" class="icon-color" alt="Kubeflow">Kubeflow</div>
+      </div></div>
+      
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">DevOps & Lifecycle</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg" class="icon-color" alt="GitHub Actions">CI/CD</div>
+          <div class="skill-badge"><img src="https://tse2.mm.bing.net/th/id/OIP.bAla57YthoWCIf-RoXX4qAHaHa?pid=Api&P=0&h=180" class="icon-color" alt="Model Versioning">Model Versioning</div>
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/18251/18251121.png" class="icon-color" alt="Experiment Tracking">Experiment Tracking</div>
+          <div class="skill-badge"><img src="https://shap.readthedocs.io/en/latest/_static/shap_logo_white.png" class="icon-color" alt="SHAP">Explainable AI (SHAP, LIME)</div>
+      </div></div>
 
-<!-- Cloud (AWS) -->
-<div class="skill-card p-6 fade-in">
-  <div class="md:flex md:justify-between md:items-center">
-    <div class="md:w-1/3">
-      <h3 class="text-2xl font-semibold text-sky-300">Cloud (AWS)</h3>
-    </div>
-    <div class="md:w-2/3 flex flex-wrap gap-4 mt-4 md:mt-0">
-      <div class="skill-badge"><img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" class="w-5 h-5" alt="AWS S3"> S3</div>
-      <div class="skill-badge"><img src="assets/glue-logo.png" class="w-5 h-5" alt="AWS Glue"> Glue</div>
-      <div class="skill-badge"><img src="assets/sagemaker-logo.png" class="w-5 h-5" alt="SageMaker"> SageMaker</div>
-      <div class="skill-badge"><img src="assets/athena-logo.png" class="w-5 h-5" alt="Athena"> Athena</div>
-      <div class="skill-badge"><img src="assets/quicksight-logo.png" class="w-5 h-5" alt="QuickSight"> QuickSight</div>
-      <div class="skill-badge"><img src="assets/ec2-logo.jpeg" class="w-5 h-5" alt="EC2"> EC2 (GPU)</div>
-    </div>
-  </div>
-</div>
-
-
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">Backend & APIs</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" class="icon-mono" alt="Flask">Flask</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="icon-color" alt="FastAPI">FastAPI</div>
+          <div class="skill-badge"><img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.svg" class="icon-mono" alt="Streamlit">Streamlit</div>
+          <div class="skill-badge"><img src="https://image.pngaaa.com/341/7318341-middle.png" class="icon-color" alt="REST APIs">RESTful APIs</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" class="icon-color" alt="GraphQL">GraphQL</div>
+          <div class="skill-badge"><img src="https://tse2.mm.bing.net/th/id/OIP.q9A9rWIBzXlXU0nWzRwaPQHaE2?pid=Api&P=0&h=180" class="icon-color" alt="Gunicorn">Gunicorn</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" class="icon-color" alt="Nginx">Nginx</div>
+      </div></div>
+      
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">Databases</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://cdn-icons-png.flaticon.com/128/919/919836.png" class="icon-color" alt="MySQL">MySQL</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="icon-color" alt="PostgreSQL">PostgreSQL</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="icon-color" alt="MongoDB">MongoDB</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cassandra/cassandra-original.svg" class="icon-color" alt="Cassandra">Cassandra</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" class="icon-color" alt="Firebase">Firebase</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/arangodb.svg" class="icon-mono" alt="ArangoDB">ArangoDB</div>
+      </div></div>
+      
+      <div class="skill-card p-6 fade-in"><h3 class="text-2xl font-semibold text-sky-300 mb-4">Visualization & Tools</h3><div class="flex flex-wrap gap-4">
+          <div class="skill-badge"><img src="https://matplotlib.org/stable/_static/logo_light.svg" class="icon-mono" alt="Matplotlib">Matplotlib</div>
+          <div class="skill-badge"><img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" class="icon-color" alt="Seaborn">Seaborn</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/plotly/plotly-original.svg" class="icon-color" alt="Plotly">Plotly</div>
+          <div class="skill-badge"><img src="https://tse2.mm.bing.net/th/id/OIP.JMAP9lGWKChkbDQKFxFV4wHaHa?pid=Api&P=0&h=180" class="icon-color" alt="Power BI">Power BI</div>
+          <div class="skill-badge"><img src="https://tse2.mm.bing.net/th/id/OIP.E2kEX1adcjP8xouUpyU25gAAAA?pid=Api&P=0&h=180" class="icon-color" alt="Tableau">Tableau</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="icon-color" alt="Git">Git</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="icon-mono" alt="GitHub">GitHub</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original-wordmark.svg" class="icon-color" alt="Jupyter">Jupyter</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" class="icon-color" alt="Google Colab">Google Colab</div>
+          <div class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="icon-color" alt="VS Code">VS Code</div>
+      </div></div>
 
     </div>
   </section>
@@ -224,12 +171,11 @@
   <footer class="bg-black border-t border-sky-400 mt-16 py-6 text-center text-gray-400">
     <p>© 2025 Salma S. All rights reserved.</p>
     <div class="flex justify-center gap-4 mt-2">
-      <a href="https://github.com/SalmaTech-03" target="_blank" class="hover:text-white transition"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-6 invert" alt="GitHub"></a>
-      <a href="https://www.linkedin.com/in/salma-s-206671203" target="_blank" class="hover:text-white transition"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-6 invert" alt="LinkedIn"></a>
+      <a href="https://github.com/SalmaTech-03" target="_blank" class="hover:text-white transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="w-6 icon-mono" alt="GitHub"></a>
+      <a href="https://www.linkedin.com/in/salma-s-206671203" target="_blank" class="hover:text-white transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" class="w-6 icon-color" alt="LinkedIn"></a>
     </div>
   </footer>
 
-  <!-- JS for fade-in on scroll -->
   <script src="script.js"></script>
 </body>
 </html>
